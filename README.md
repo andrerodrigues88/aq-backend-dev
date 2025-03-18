@@ -97,7 +97,7 @@ Seus objetivos são:
 * Neste teste não há pegadinhas ou detalhes escondidos, então não se preocupe em tentar procurá-los.
 
 # Submissão
-* Faça uma cópia do repositório, torne-o privado e adicione o usuário **@cgromulo** e **@abreufilho** como colaborador usando o link abaixo:
+* Faça uma cópia do repositório, torne-o privado e adicione o usuário **@cgromulo**, **@rmfleitao**, **@lucashenris** e **@abreufilho** como colaborador usando o link abaixo:
   * >https://github.com/SEU_USUARIO/aq-backend-dev/settings/access
 * Faça as alterações de modo a cumprir as tarefas deste teste, dê os commits necessários e o push final para o seu repositório remoto no GitHub, lembrando de fazê-lo antes do prazo final.
 * O tempo de entrega *NÃO* está sendo avaliado, mas envios após a data e hora limite serão desconsiderados.
