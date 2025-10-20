@@ -152,3 +152,283 @@ php artisan serve
 Acesse a aplicação em http://localhost:8000.
 
 Este repositório utiliza Laravel 9. Consulte a documentação oficial para mais informações.
+
+---
+
+# 🎯 Funcionalidades Implementadas
+
+Este projeto foi estendido com funcionalidades de visualização de dados geoespaciais e gráficos interativos.
+
+## 📋 Lista de Funcionalidades
+
+### ✅ 1. Página Inicial com Navegação
+- **Rota:** `/`
+- **Descrição:** Página inicial com dois cartões de navegação:
+  - **Mapa:** Leva para a visualização do mapa interativo
+  - **Gráfico:** Leva para a visualização de gráficos de dados climáticos
+- **Tecnologias:** Laravel Blade, TailwindCSS
+
+### ✅ 2. Página do Mapa Interativo
+- **Rota:** `/mapa`
+- **Descrição:** Mapa interativo com OpenLayers contendo:
+
+#### Funcionalidades do Mapa:
+1. **Componente de Coordenadas do Mouse**
+   - Posição: Canto inferior esquerdo (fixo)
+   - Estilo: Fundo branco com opacidade 0.5, fonte 18px
+   - Exibe latitude e longitude em tempo real
+
+2. **Context Menu (Popup)**
+   - Ativação: Clique com botão direito no mapa
+   - Conteúdo:
+     - Latitude e longitude do ponto clicado
+     - Data/hora do clique (formato: DD/MM/YYYY HH:mm:ss)
+     - Ícone de calendário ao lado da data
+   - Espaçamento maior entre elementos (padding 20px, margin 12px)
+
+3. **Botões de Zoom**
+   - Posição: Topo esquerdo (flutuantes)
+   - Botão Zoom In (+): Aumenta o zoom do mapa
+   - Botão Zoom Out (-): Diminui o zoom do mapa
+   - Ícones: Font Awesome
+
+4. **Botão de Alternar Mapa de Fundo**
+   - Posição: Topo direito
+   - Funcionalidade: Alterna entre:
+     - OpenStreetMap (mapa de ruas)
+     - Google Satellite (imagem de satélite)
+   - Indicador visual do mapa ativo
+
+5. **Barra de Escala**
+   - Posição: Canto inferior direito
+   - Exibe a escala do mapa em metros/quilômetros
+
+- **Tecnologias:** OpenLayers 8.2.0, Font Awesome 6.4.0
+
+### ✅ 3. Página de Gráficos
+- **Rota:** `/grafico`
+- **Descrição:** Visualização de dados climáticos com Chart.js
+
+#### Funcionalidades do Gráfico:
+1. **Datasets**
+   - **Temperatura:** Gráfico de linhas (vermelho)
+   - **Precipitação:** Gráfico de barras (azul)
+   - Dados mensais (12 meses)
+
+2. **Botão de Alternar Visualização**
+   - **Ambos:** Exibe temperatura e precipitação juntos
+   - **Temperatura:** Exibe apenas temperatura
+   - **Precipitação:** Exibe apenas precipitação
+   - Indicador visual do modo ativo
+
+3. **Características do Gráfico**
+   - Dois eixos Y (temperatura à esquerda, precipitação à direita)
+   - Tooltip interativo ao passar o mouse
+   - Legenda customizada
+   - Animações suaves
+   - Design responsivo
+
+- **Tecnologias:** Chart.js 4.4.0, Font Awesome 6.4.0
+
+### ✅ 4. Navegação Contínua
+- Todas as páginas possuem botões de navegação para:
+  - Voltar à página inicial
+  - Ir para o mapa
+  - Ir para o gráfico
+- Não é necessário voltar à página inicial para navegar entre seções
+
+### ✅ 5. Estilização com app.css
+- Arquivo `resources/css/app.css` contém:
+  - Estilos globais reutilizáveis
+  - Classes utilitárias (spacing, flexbox, cores)
+  - Componentes de botões e cards
+  - Animações
+  - Responsividade
+
+### ✅ 6. Documentação do Código
+- Todas as funções JavaScript possuem docstrings
+- Comentários explicativos em código novo
+- Documentação inline para facilitar manutenção
+
+### ✅ 7. Testes E2E com Cypress
+- Suite completa de testes automatizados
+- Cobertura de todas as funcionalidades implementadas
+
+---
+
+## 🧪 Executando os Testes
+
+### Pré-requisitos
+Certifique-se de que o servidor Laravel está rodando:
+```bash
+php artisan serve
+```
+
+### Instalar Cypress
+Se ainda não instalou as dependências do npm:
+```bash
+npm install
+```
+
+### Executar Testes
+
+**Modo Interativo (recomendado para desenvolvimento):**
+```bash
+npm run cypress:open
+```
+
+**Modo Headless (para CI/CD):**
+```bash
+npm run cypress:run
+```
+
+### Estrutura dos Testes
+```
+cypress/
+├── e2e/
+│   ├── home.cy.js       # Testes da página inicial
+│   ├── mapa.cy.js       # Testes do mapa interativo
+│   └── grafico.cy.js    # Testes dos gráficos
+├── support/
+│   ├── commands.js      # Comandos customizados
+│   └── e2e.js          # Configurações globais
+└── cypress.config.js    # Configuração do Cypress
+```
+
+### Cobertura de Testes
+
+#### Página Inicial (home.cy.js)
+- ✅ Carregamento da página
+- ✅ Exibição dos cartões
+- ✅ Navegação para mapa e gráfico
+- ✅ Efeitos hover
+
+#### Página do Mapa (mapa.cy.js)
+- ✅ Carregamento do mapa
+- ✅ Componente de coordenadas do mouse
+- ✅ Context menu (popup) com data/hora
+- ✅ Botões de zoom in/out
+- ✅ Alternar mapa de fundo
+- ✅ Navegação contínua
+- ✅ Barra de escala
+
+#### Página de Gráficos (grafico.cy.js)
+- ✅ Carregamento do Chart.js
+- ✅ Datasets de temperatura e precipitação
+- ✅ Botões de alternar visualização
+- ✅ Tipos de gráfico (linha e barras)
+- ✅ Legenda customizada
+- ✅ Navegação contínua
+- ✅ Responsividade
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### Backend
+- **Laravel 9.x** - Framework PHP
+- **PHP 8.0+** - Linguagem de programação
+
+### Frontend
+- **OpenLayers 8.2.0** - Biblioteca de mapas interativos
+- **Chart.js 4.4.0** - Biblioteca de gráficos
+- **Font Awesome 6.4.0** - Ícones
+- **TailwindCSS** - Framework CSS (inline)
+
+### Testes
+- **Cypress 13.6.0** - Framework de testes E2E
+
+### Ferramentas
+- **Vite** - Build tool
+- **Composer** - Gerenciador de dependências PHP
+- **NPM** - Gerenciador de dependências JavaScript
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+aq-backend-dev/
+├── app/                          # Código da aplicação Laravel
+├── resources/
+│   ├── views/
+│   │   ├── welcome.blade.php    # Página inicial
+│   │   ├── mapa.blade.php       # Página do mapa
+│   │   └── grafico.blade.php    # Página de gráficos
+│   └── css/
+│       └── app.css              # Estilos customizados
+├── routes/
+│   └── web.php                  # Rotas da aplicação
+├── cypress/
+│   ├── e2e/                     # Testes E2E
+│   └── support/                 # Suporte do Cypress
+├── public/                      # Arquivos públicos
+├── cypress.config.js            # Configuração do Cypress
+├── package.json                 # Dependências JavaScript
+├── composer.json                # Dependências PHP
+└── README.md                    # Este arquivo
+```
+
+---
+
+## 🎨 Boas Práticas Implementadas
+
+### Código
+- ✅ Funções documentadas com docstrings
+- ✅ Comentários explicativos em código novo
+- ✅ Nomenclatura clara e descritiva
+- ✅ Separação de responsabilidades
+- ✅ Código modular e reutilizável
+
+### UI/UX
+- ✅ Design responsivo
+- ✅ Feedback visual em interações
+- ✅ Navegação intuitiva
+- ✅ Cores e ícones consistentes
+- ✅ Animações suaves
+- ✅ Acessibilidade
+
+### Testes
+- ✅ Cobertura completa de funcionalidades
+- ✅ Testes organizados por página
+- ✅ Comandos customizados reutilizáveis
+- ✅ Asserções claras e específicas
+
+### Git
+- ✅ Commits descritivos
+- ✅ Mensagens claras e objetivas
+- ✅ Histórico organizado
+
+---
+
+## 📝 Notas Importantes
+
+1. **Servidor Local:** A aplicação deve estar rodando em `http://localhost:8000` para os testes funcionarem
+2. **Dependências:** Execute `composer install` e `npm install` antes de rodar a aplicação
+3. **Navegadores:** Os testes Cypress funcionam em Chrome, Firefox e Edge
+4. **Dados do Gráfico:** Os dados de temperatura e precipitação são mockados para demonstração
+
+---
+
+## 🚀 Próximos Passos (Opcional)
+
+- [ ] Integrar com API real de dados climáticos
+- [ ] Adicionar mais camadas ao mapa (municípios, estados)
+- [ ] Implementar filtros de data nos gráficos
+- [ ] Adicionar exportação de gráficos (PNG, PDF)
+- [ ] Implementar autenticação de usuários
+- [ ] Deploy em produção
+
+---
+
+## 📞 Suporte
+
+Para dúvidas ou problemas, consulte a documentação oficial:
+- [Laravel 9](https://laravel.com/docs/9.x)
+- [OpenLayers](https://openlayers.org/)
+- [Chart.js](https://www.chartjs.org/)
+- [Cypress](https://docs.cypress.io/)
+
+---
+
+**Desenvolvido com ❤️ para AgronomiQ**
